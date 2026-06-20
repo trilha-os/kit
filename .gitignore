@@ -1,0 +1,13 @@
+# Segredos — nunca subir
+.env
+.env.local
+*.key
+*.pem
+
+# Sistema
+.DS_Store
+Thumbs.db
+node_modules/
+
+# Configs locais do Claude Code
+.claude/settings.local.json
