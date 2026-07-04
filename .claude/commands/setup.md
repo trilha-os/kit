@@ -110,6 +110,10 @@ Se a pessoa colar o resultado, use pra refinar o gargalo, o nível e a ordem de 
    `conteudo/` (carrosseis/, posts/, roteiros/), `clientes/` (com `_modelo/`), `precos/`, `projetos/`
    e `tarefas.md`. **Ordenar pelo pilar do gargalo** (mostrar a sugestão e deixar a pessoa ajustar).
    Cada pasta mapeia a um pilar — deixar isso explícito, é parte de ensinar negócio pra quem é criativo.
+   **Em toda pasta de trabalho criada** (inclusive `conteudo/carrosseis`, `conteudo/posts`,
+   `conteudo/roteiros`, `precos/`, `projetos/`), colocar um `README.md` de **uma linha** dizendo o
+   que vai ali. Isso evita pasta vazia — o git não versiona diretório vazio, então sem um arquivo
+   dentro o `/syncar` não faz backup dela.
 7. **Ferramentas/MCPs** — cruzar a Pergunta 7 com `templates/ferramentas/catalogo.md`; sugerir
    conectar só o essencial agora; anotar o resto em `tarefas.md` pra depois.
 
