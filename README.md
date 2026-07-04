@@ -27,17 +27,24 @@ O Claude clona o kit, abre tudo e começa a te entrevistar pra configurar o sist
 ## Primeiros passos depois de instalar
 
 1. **`/setup`** — configura o sistema pro teu negócio (te entrevista, gera teu contexto e tuas pastas).
-2. **`/mapear`** — pega um processo repetitivo teu e vira uma skill.
-3. **`/syncar`** — conecta no GitHub pra nunca perder teu trabalho.
+2. **`/iniciar`** — carrega teu contexto no começo de cada sessão de trabalho.
+3. **`/mapear`** — pega um processo repetitivo teu e vira uma skill.
+4. **`/syncar`** — conecta no GitHub pra nunca perder teu trabalho.
 
 ## O que vem aqui dentro
 
 - `CLAUDE.md` — o cérebro: o Claude lê isso toda vez que você fala com ele.
-- `.claude/commands/` — comandos do dia a dia (`/setup`, `/mapear`, `/novo-projeto`, `/atualizar`, `/syncar`).
+- `.claude/commands/` — comandos do dia a dia (`/setup`, `/iniciar`, `/mapear`, `/novo-projeto`, `/atualizar`, `/syncar`).
 - `.claude/skills/` — núcleo de skills (carrossel, legenda, pauta, conselho).
 - `_contexto/` — quem você é, tuas preferências, teu foco (preenchido no `/setup`).
 - `marca/design-guide.md` — tua identidade visual (o Claude usa em tudo que é visual).
+- `ideias/` — inbox pra ideia crua não se perder (vira pauta/projeto depois).
+- `referencias/` — teu moodboard: inspirações, paletas, prints que você guarda.
+- `dados/` — jogue aqui print de métrica, planilha, PDF pro Claude analisar.
 - `templates/` — perfis, catálogo de ferramentas e o roadmap das skills que chegam por aula.
+
+As pastas de trabalho (`conteudo/`, `clientes/`, `precos/`, `projetos/`) o `/setup` cria pra
+você, na ordem do teu gargalo. Cada pasta é um dos 4 pilares — ver o mapa no `CLAUDE.md`.
 
 > **Importante:** o kit é enxuto de propósito. A gente entrega novas skills ao longo das aulas pra
 > você ir acrescentando — instale só o que for usar. Ver `templates/skills/catalogo.md`.

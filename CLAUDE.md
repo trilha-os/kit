@@ -32,10 +32,31 @@ Você opera o negócio em torno de quatro pilares. Cada um ganha skills própria
 - **Vendas** — qualificar, precificar, fechar com margem
 - **Imagem** — identidade visual, narrativa e produção de conteúdo com voz autoral
 
+## As tuas pastas (cada uma é um pilar)
+
+O sistema é organizado pra você enxergar onde mora cada parte do negócio. Não precisa decorar —
+o Claude usa isso sozinho. Mas quando bater a dúvida "onde eu ponho isso?", é aqui:
+
+| Pasta | Pilar | O que vai dentro |
+|---|---|---|
+| `_contexto/` | Gestão | o cérebro: quem você é, foco, preferências |
+| `ideias/` | Gestão | inbox de ideias cruas (vira pauta/projeto depois) |
+| `conteudo/` | Marketing | carrosséis, posts, roteiros |
+| `marca/` | Imagem | teu design-guide e identidade |
+| `referencias/` | Imagem | moodboard: inspirações, paletas, prints que você guarda |
+| `clientes/` | Vendas | um por cliente: briefing → proposta → entrega |
+| `precos/` | Vendas | precificação, o que você cobra |
+| `projetos/` | — | trabalhos maiores / portfólio |
+| `dados/` | análise | prints de métrica, planilhas — pra o Claude analisar |
+
+`ideias/`, `referencias/` e `dados/` já vêm prontas (com um README). As outras o `/setup` cria
+conforme o teu gargalo — você não começa com pasta vazia sem sentido.
+
 ## O que já vem instalado (núcleo)
 
 **Comandos** (em `.claude/commands/`):
 - `/setup` — configura o sistema pro teu negócio (te entrevista e gera teu contexto)
+- `/iniciar` — carrega o contexto no começo de cada sessão (rode antes de trabalhar)
 - `/mapear` — transforma um processo repetitivo teu numa skill
 - `/novo-projeto` — cria pasta + contexto pra um projeto ou cliente novo
 - `/atualizar` — sincroniza o contexto quando algo mudou

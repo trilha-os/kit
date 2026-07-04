@@ -105,10 +105,16 @@ Se a pessoa colar o resultado, use pra refinar o gargalo, o nível e a ordem de 
 3. **`_contexto/estrategia.md`** — fase, prioridade principal, o que pode esperar, prazos.
 4. **`_contexto/preferencias.md`** — tom de voz, o que evitar, estilo.
 5. **`marca/design-guide.md`** — preenchido (ou em branco com orientação).
-6. **Estrutura de pastas** — usar `templates/perfis/empreendedor-criativo.md` como base; mostrar a
-   sugestão e deixar a pessoa ajustar; ordenar pelo pilar do gargalo. Criar as pastas.
+6. **Estrutura de pastas** — usar `templates/perfis/empreendedor-criativo.md` como base. As pastas
+   `ideias/`, `referencias/` e `dados/` já vêm no kit — **não recriar**. Criar as de trabalho:
+   `conteudo/` (carrosseis/, posts/, roteiros/), `clientes/` (com `_modelo/`), `precos/`, `projetos/`
+   e `tarefas.md`. **Ordenar pelo pilar do gargalo** (mostrar a sugestão e deixar a pessoa ajustar).
+   Cada pasta mapeia a um pilar — deixar isso explícito, é parte de ensinar negócio pra quem é criativo.
 7. **Ferramentas/MCPs** — cruzar a Pergunta 7 com `templates/ferramentas/catalogo.md`; sugerir
    conectar só o essencial agora; anotar o resto em `tarefas.md` pra depois.
+
+**Vocabulário:** falar a língua de quem cria, não de gestor. "quantos projetos/mês", "quanto você
+cobra", "teus clientes" — evitar MRR, CAC, faturamento, ticket. O aluno é criativo, não planilheiro.
 
 ---
 
