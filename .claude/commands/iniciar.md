@@ -15,9 +15,10 @@ ter que explicar tudo de novo.
 
 1. Ver se `_contexto/empresa.md` está preenchido de verdade (não só o template).
 2. Ler `_contexto/empresa.md`, `_contexto/preferencias.md` e `_contexto/estrategia.md`.
-3. Ler o `CLAUDE.md` se existir.
-4. Se houver `tarefas.md`, pegar os itens abertos.
-5. Devolver um resumo curto e perguntar o que a pessoa quer fazer.
+3. Se existir `_contexto/diagnostico.md` (gerado pelo `/diagnostico`), ler também — é o gargalo e a trilha de aulas do aluno.
+4. Ler o `CLAUDE.md` se existir.
+5. Se houver `tarefas.md`, pegar os itens abertos.
+6. Devolver um resumo curto e perguntar o que a pessoa quer fazer.
 
 ## Fluxo
 
@@ -30,14 +31,16 @@ Contexto carregado.
 
 **Negócio:** [nome e o que faz, em uma linha]
 **Foco agora:** [prioridade principal de estrategia.md — omitir a linha se não tiver]
+**Gargalo + trilha:** [de diagnostico.md, se existir: o pilar que trava e a próxima aula do caminho — omitir se não tiver]
 **Pra lembrar:** [preferência importante, ex: "sem travessão", "tom oral"]
 **Aberto:** [até 3 itens de tarefas.md, se houver]
 
 O que você quer atacar hoje?
 ```
 
-Não reescreva tudo que está nos arquivos — só o essencial. Se der pra sugerir por onde começar
-pelo **gargalo** do aluno (o pilar que mais trava, registrado em `_contexto/empresa.md`), sugira.
+Não reescreva tudo que está nos arquivos — só o essencial. Se existir `_contexto/diagnostico.md`,
+use o **gargalo** e a **próxima aula da trilha** pra sugerir por onde começar. Sem ele, use o
+gargalo registrado em `_contexto/empresa.md`.
 
 ### Se o contexto NÃO está configurado
 

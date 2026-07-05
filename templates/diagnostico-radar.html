@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico · Trilha OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,800;0,900&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F1ECDF; --paper-2:#ECE6D5; --paper-3:#E5DEC8;
+  --ink:#0E0E0C; --ink-soft:#3A372F; --ink-mute:#6B675B; --ink-faint:#9A9486;
+  --rust:#C4421A; --rust-deep:#8E2F11; --line:#D8D0BD; --line-strong:#C7BDA4;
+  --grid:#CFC6AF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter Tight',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+.serif{font-family:'Instrument Serif',serif;font-style:italic;color:var(--rust);font-weight:400}
+.mono{font-family:'JetBrains Mono',monospace}
+.bar{background:var(--ink);color:var(--paper);padding:14px 22px;display:flex;align-items:center;gap:14px;border-bottom:3px solid var(--rust)}
+.bar .glyph{color:var(--rust);font-size:1.3rem;line-height:1}
+.bar .brand{font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase}
+.bar .status{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rust)}
+.bar .status.done{color:#6FCF8A}
+.wrap{max-width:560px;margin:0 auto;padding:26px 22px 48px}
+.who{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+.name{font-size:1.5rem;font-weight:800;letter-spacing:-.03em;margin-bottom:18px}
+.name span{color:var(--ink-faint);font-weight:400}
+.prog{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.prog-track{flex:1;height:5px;background:var(--paper-3);overflow:hidden}
+.prog-fill{height:100%;background:var(--rust);width:0;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.prog-count{font-family:'JetBrains Mono',monospace;font-size:.64rem;color:var(--rust);white-space:nowrap}
+.radar-card{background:var(--paper-2);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:18px 10px 6px;display:flex;justify-content:center}
+svg{max-width:100%;height:auto;display:block}
+.axis-lbl{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;fill:var(--ink)}
+.axis-val{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;fill:var(--rust)}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.pill{background:var(--paper);border:1.5px solid var(--line-strong);padding:11px 13px}
+.pill .k{font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);display:flex;justify-content:space-between}
+.pill .k b{color:var(--rust);font-weight:600}
+.pill .track{height:4px;background:var(--paper-3);margin-top:7px;overflow:hidden}
+.pill .fill{height:100%;background:var(--rust);width:0;transition:width .5s ease}
+.pill.mid .fill{background:#C99A3B} .pill.good .fill{background:#7E8C6A}
+.result{margin-top:24px;background:var(--ink);color:var(--paper);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--rust);padding:22px;display:none}
+.result.show{display:block}
+.result .lvl{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
+.result h2{font-size:1.5rem;font-weight:800;letter-spacing:-.03em;margin-bottom:12px}
+.result h2 .serif{color:#E8A88C}
+.result p{font-size:.94rem;color:rgba(241,236,223,.8);line-height:1.6;margin-bottom:18px}
+.trilha-lbl{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:11px}
+.trilha{list-style:none;display:flex;flex-direction:column;gap:2px}
+.trilha li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(241,236,223,.09);font-size:.9rem}
+.trilha li .n{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--ink-faint);width:20px;flex-shrink:0}
+.trilha li.head{color:#E8A88C;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;border-bottom:none;padding:12px 0 3px}
+.trilha li .soon{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:#C99A3B;padding:2px 6px}
+.waiting{text-align:center;color:var(--ink-faint);font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;margin-top:26px}
+</style>
+</head>
+<body>
+
+<!-- ░░░ DADOS — o Claude reescreve SÓ o bloco entre DIAG-START e DIAG-END a cada resposta ░░░ -->
+<script>
+/* DIAG-START */
+window.DIAG = {
+  nome: "", negocio: "",
+  total: 12, feitas: 0,
+  etapa: "",
+  scores: { gestao: 0, marketing: 0, vendas: 0, imagem: 0 },
+  nivel: "", arquetipo: "", leitura: "",
+  trilha: []
+};
+/* DIAG-END */
+</script>
+
+<div class="bar">
+  <span class="glyph">✦</span>
+  <span class="brand">Trilha · Diagnóstico</span>
+  <span class="status" id="status">aguardando…</span>
+</div>
+
+<div class="wrap">
+  <div class="who">Diagnóstico de</div>
+  <div class="name" id="name">—</div>
+
+  <div class="prog">
+    <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+    <span class="prog-count mono" id="progCount">0 / 12</span>
+  </div>
+
+  <div class="radar-card">
+    <svg viewBox="0 0 360 320" id="radar" role="img" aria-label="Radar dos 4 pilares"></svg>
+  </div>
+
+  <div class="pillars" id="pillars"></div>
+
+  <div class="result" id="result">
+    <div class="lvl" id="rLvl"></div>
+    <h2 id="rArc"></h2>
+    <p id="rLeitura"></p>
+    <div class="trilha-lbl">✦ tua trilha</div>
+    <ul class="trilha" id="rTrilha"></ul>
+  </div>
+
+  <div class="waiting" id="waiting">responda no chat do Claude — o radar preenche aqui ↑</div>
+</div>
+
+<script>
+(function(){
+  const D = window.DIAG || {};
+  const S = D.scores || {gestao:0,marketing:0,vendas:0,imagem:0};
+  const CX=180, CY=150, R=108;
+  const AX=[
+    {key:'gestao',   label:'Gestão',    ang:-90},
+    {key:'marketing',label:'Marketing', ang:0},
+    {key:'vendas',   label:'Vendas',    ang:90},
+    {key:'imagem',   label:'Imagem',    ang:180}
+  ];
+  const pt=(ang,rad)=>{const a=ang*Math.PI/180;return [CX+rad*Math.cos(a), CY+rad*Math.sin(a)];};
+  let svg='';
+  [0.25,0.5,0.75,1].forEach(f=>{
+    const p=AX.map(x=>pt(x.ang,R*f).map(n=>n.toFixed(1)).join(',')).join(' ');
+    svg+=`<polygon points="${p}" fill="none" stroke="var(--grid)" stroke-width="1"/>`;
+  });
+  AX.forEach(x=>{const [ex,ey]=pt(x.ang,R);svg+=`<line x1="${CX}" y1="${CY}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}" stroke="var(--grid)" stroke-width="1"/>`;});
+  const dp=AX.map(x=>pt(x.ang,R*(Math.max(0,Math.min(100,S[x.key]||0))/100)).map(n=>n.toFixed(1)).join(',')).join(' ');
+  svg+=`<polygon points="${dp}" fill="rgba(196,66,26,0.18)" stroke="var(--rust)" stroke-width="2.5" stroke-linejoin="round"/>`;
+  AX.forEach(x=>{const [px,py]=pt(x.ang,R*(Math.max(0,Math.min(100,S[x.key]||0))/100));svg+=`<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="3.5" fill="var(--rust)"/>`;});
+  AX.forEach(x=>{
+    const [lx,ly]=pt(x.ang,R+26);
+    let anchor='middle', dy=0;
+    if(x.ang===0){anchor='start';} if(x.ang===180){anchor='end';}
+    if(x.ang===-90){dy=-4;} if(x.ang===90){dy=14;}
+    svg+=`<text x="${lx.toFixed(1)}" y="${(ly+dy).toFixed(1)}" text-anchor="${anchor}" class="axis-lbl">${x.label}</text>`;
+    svg+=`<text x="${lx.toFixed(1)}" y="${(ly+dy+13).toFixed(1)}" text-anchor="${anchor}" class="axis-val">${Math.round(S[x.key]||0)}</text>`;
+  });
+  document.getElementById('radar').innerHTML=svg;
+
+  document.getElementById('name').innerHTML = D.nome ? `${D.nome}${D.negocio?` <span>· ${D.negocio}</span>`:''}` : '—';
+  const feitas=D.feitas||0, total=D.total||12;
+  document.getElementById('progFill').style.width=Math.round(feitas/total*100)+'%';
+  document.getElementById('progCount').textContent=`${feitas} / ${total}`;
+
+  const tier=v=> v<30?'low':(v<60?'mid':'good');
+  document.getElementById('pillars').innerHTML=AX.map(x=>{
+    const v=Math.round(S[x.key]||0);
+    return `<div class="pill ${tier(v)}"><div class="k"><span>${x.label}</span><b>${v}</b></div><div class="track"><div class="fill" style="width:${v}%"></div></div></div>`;
+  }).join('');
+
+  const st=document.getElementById('status');
+  if(D.etapa==='fim'){
+    st.textContent='concluído ✦'; st.classList.add('done');
+    document.getElementById('waiting').style.display='none';
+    const r=document.getElementById('result'); r.classList.add('show');
+    document.getElementById('rLvl').textContent=`Nível ${D.nivel||''}`;
+    document.getElementById('rArc').innerHTML=`Você é o <span class="serif">${D.arquetipo||''}</span>.`;
+    document.getElementById('rLeitura').textContent=D.leitura||'';
+    document.getElementById('rTrilha').innerHTML=(D.trilha||[]).map(it=>{
+      if(it.head) return `<li class="head">${it.head}</li>`;
+      return `<li><span class="n">›</span><span>${it.nome}</span>${it.soon?'<span class="soon">em breve</span>':''}</li>`;
+    }).join('');
+  } else {
+    st.textContent = feitas>0 ? `respondendo… ${feitas}/${total}` : 'aguardando…';
+    setTimeout(()=>location.reload(), 1300);
+  }
+})();
+</script>
+</body>
+</html>

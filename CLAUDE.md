@@ -56,6 +56,7 @@ conforme o teu gargalo — você não começa com pasta vazia sem sentido.
 
 **Comandos** (em `.claude/commands/`):
 - `/setup` — configura o sistema pro teu negócio (te entrevista e gera teu contexto)
+- `/diagnostico` — o onboarding: te entrevista nos 4 pilares e desenha um radar ao vivo do lado, com teu arquétipo e a trilha de aulas por onde começar
 - `/iniciar` — carrega o contexto no começo de cada sessão (rode antes de trabalhar)
 - `/mapear` — transforma um processo repetitivo teu numa skill
 - `/novo-projeto` — cria pasta + contexto pra um projeto ou cliente novo
