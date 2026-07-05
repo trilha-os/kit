@@ -52,6 +52,11 @@ o Claude usa isso sozinho. Mas quando bater a dúvida "onde eu ponho isso?", é 
 `ideias/`, `referencias/` e `dados/` já vêm prontas (com um README). As outras o `/setup` cria
 conforme o teu gargalo — você não começa com pasta vazia sem sentido.
 
+> **Prefixo de prioridade:** depois do `/diagnostico`, as pastas de trabalho podem ganhar um número
+> na frente (ex.: `01-clientes/`) pra colocar o teu gargalo no topo. É o mesmo conteúdo, só
+> reordenado. Quando qualquer comando ou instrução citar uma pasta (ex.: `clientes/`), vale a pasta
+> com aquele nome **com ou sem o prefixo numérico** — trate `clientes/` e `01-clientes/` como a mesma.
+
 ## O que já vem instalado (núcleo)
 
 **Comandos** (em `.claude/commands/`):

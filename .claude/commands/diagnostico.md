@@ -12,9 +12,8 @@ description: >
 Entrevista o usuário nos 4 pilares e vai desenhando um **radar ao vivo** num arquivo HTML aberto ao
 lado. No fim entrega arquétipo + trilha personalizada. É o onboarding: descobrir por onde começar.
 
-> Entrevista + radar ao vivo + resultado salvo no sistema. Ao final, o diagnóstico, a trilha e as
-> respostas do aluno ficam gravados em `_contexto/diagnostico.md` (reordenar as pastas dos pilares
-> pelo gargalo entra numa versão seguinte).
+> Entrevista + radar ao vivo + resultado salvo no sistema. Ao final: grava o diagnóstico, a trilha e
+> as respostas em `_contexto/diagnostico.md` **e reordena as pastas de trabalho pela ordem do gargalo**.
 
 ## Pré-requisito — o /setup primeiro (não pular etapa)
 
@@ -151,5 +150,24 @@ Estrutura do arquivo:
 
 Peça a data ao aluno ou deixe o campo `[data]` (não invente data). Ao terminar, avise:
 *"Salvei teu diagnóstico e a tua trilha em `_contexto/diagnostico.md`. Toda vez que você rodar
-`/iniciar`, eu já começo sabendo teu gargalo e o que vem primeiro."* Feche resumindo em voz o
-gargalo e a primeira aula do caminho.
+`/iniciar`, eu já começo sabendo teu gargalo e o que vem primeiro."*
+
+### Reordene as pastas pela ordem do gargalo
+
+Pra deixar o foco do aluno no topo, renomeie as **pastas de trabalho** com um prefixo numérico na
+ordem dos pilares (do menor score = gargalo pro maior). Preserve o conteúdo (renomeie a pasta, não
+recrie).
+
+- Pilar → pasta de trabalho: **Vendas** = `clientes/` e `precos/` · **Marketing** = `conteudo/` ·
+  **Gestão** = `ideias/` · **Imagem** = `referencias/`.
+- Rank: o pilar-gargalo vira `01-`, o próximo `02-`, etc. Ex.: gargalo em Vendas → `01-clientes/`,
+  `01-precos/`, depois `02-conteudo/` (Marketing 2º), `03-ideias/`, `04-referencias/`.
+- **Nunca** toque em `_contexto/`, `marca/`, `dados/`, `templates/` nem `projetos/` — são cérebro,
+  identidade, análise e neutras. Só as 5 pastas de trabalho acima entram.
+- **Idempotente:** se a pasta já tiver um prefixo `NN-` de um diagnóstico anterior, remova antes de
+  aplicar o novo (não empilhe `01-01-`). Se a pasta não existir, pula ela.
+- Registre a ordem no fim do `_contexto/diagnostico.md` e avise: *"Reorganizei tuas pastas de
+  trabalho: as de [pilar-gargalo] subiram pro topo, que é teu foco agora. É o mesmo conteúdo, só na
+  ordem da tua prioridade."*
+
+Feche resumindo em voz o gargalo e a primeira aula do caminho.
