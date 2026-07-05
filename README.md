@@ -8,7 +8,7 @@ prontos pra você começar a operar — não um curso de ferramenta, um jeito de
 Você não precisa saber nada de terminal. Abra o Claude Code numa pasta nova e cole este prompt:
 
 ```
-Instala pra mim o repositório https://github.com/notkerstens1/trilha-os-kit nesta pasta,
+Instala pra mim o repositório https://github.com/trilha-os/kit nesta pasta,
 abre a pasta e roda /setup.
 ```
 
@@ -20,7 +20,7 @@ O Claude clona o kit, abre tudo e começa a te entrevistar pra configurar o sist
 2. Numa pasta nova, abra o Claude Code.
 3. Rode:
    ```
-   git clone https://github.com/notkerstens1/trilha-os-kit.git .
+   git clone https://github.com/trilha-os/kit.git .
    ```
 4. No Claude Code, rode `/setup` e responda as perguntas.
 
